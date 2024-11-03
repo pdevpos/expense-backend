@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'ci-server'
+    }
     stages {
         stage('Build') {
             steps {
