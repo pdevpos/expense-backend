@@ -1,22 +1,12 @@
-pipeline {
-    agent {
-        label 'ci-server'
+pipeline{
+    agent{
+        node{
+            label 'ci-server'
+            }
+   }
+ stages{
+    stage{
+        steps()
     }
-    stages {
-        stage('Build') {
-            steps {
-                sh "echo Build"
-            }
-        }
-        stage('Test') {
-            steps {
-                sh "echo Test"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh "echo Deploy"
-            }
-        }
-    }
+ }
 }
