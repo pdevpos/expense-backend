@@ -1,13 +1,19 @@
 node('ci-server') {
     stage('checkout'){
         sh 'env'
-        git url: 'https://github.com/pdevpos/expense-backend.git',branch: 'main'
+        git url: 'https://github.com/pdevpos/expense-backend.git',branch: "${env.BRANCH_NAME}"
         //refs/remotes/origin/main
 //         def repoUrl = 'https://github.com/pdevpos/expense-backend.git'
         def branchName = "${env.BRANCH_NAME}"
         def tagName = "${env.TAG_NAME}"
         echo branchName
         echo tagName
+        if(env.BRANCH_NAME == branchName){
+          echo "main branch"
+        }
+        else{
+        echo "tag"
+        }
 //
 //         checkout scm(
 //             branches: [[name: "*/${branchName}"]],
@@ -15,12 +21,7 @@ node('ci-server') {
 //             )
     }
     stage('Lint code') {
-        if(env.BRANCH_NAME == 'main'){
-            echo 'main branch'
-        }
-       else{
-        echo 'tag'
-       }
+        print 'OK'
     }
     stage('Run unit tests') {
         print 'OK'
