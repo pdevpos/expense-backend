@@ -1,7 +1,7 @@
 pipeline{
     agent{
         node{
-            label 'ci-server'
+            label 'workstation'
             }
    }
  stages{
