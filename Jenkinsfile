@@ -7,6 +7,7 @@ pipeline{
  stages{
     stage('Lint code'){
         steps{
+            sh 'env'
             echo "Run Lint code"
         }
     }
