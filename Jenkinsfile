@@ -30,11 +30,13 @@ pipeline{
         }
     }
     stage('Build code'){
+        when { not branch 'main' }
         steps{
             echo "Build code"
         }
     }
     stage('Release software'){
+        when { not branch 'main' }
         steps{
             echo "Release software"
         }
