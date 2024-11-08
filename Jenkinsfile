@@ -8,8 +8,7 @@ pipeline{
     stage('Lint code'){
     when { buildingTag() }
      steps{
-            sh 'env'
-            echo "Run Lint code"
+         echo "Run Lint code"
      }
  }
     stage('Run unit tests'){
