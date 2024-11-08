@@ -20,7 +20,7 @@ pipeline{
     stage('Run integration tests'){
         when { allOf {
          not { buildingTag() };
-         not  branch 'main'
+         not { branch 'main' }
                   }
                   }
         steps{
