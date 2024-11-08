@@ -1,9 +1,9 @@
 node('ci-server') {
     stage('checkout'){
         checkout 'GitSCM'([
-            branches: [[name: '${env.BRANCH_NAME}']],
+            branches: [[name: '*/${env.BRANCH_NAME}']],
             userRemoteConfigs: [[ url: 'https://github.com/pdevpos/expense-backend.git' ]]
-            ])
+            )]
     }
     stage('Lint code') {
         if(env.BRANCH_NAME == 'main'){
