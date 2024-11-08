@@ -40,7 +40,7 @@ pipeline{
     stage('Build code'){
          when { allOf {
              not { buildingTag() };
-             not { branch 'main' }
+             { branch 'main' }
                       }
                       }
         steps{
