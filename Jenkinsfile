@@ -1,27 +1,59 @@
-node('ci-server') {
-    stage('Lint code') {
-        if(env.BRANCH_NAME == 'main'){
-            echo 'success'
+pipeline{
+    agent{
+        node{
+            label 'ci-server'
+            }
+   }
+ stages{
+    stage('Lint code'){
+    sh 'env'
+    when { buildingTag() }
+     steps{
+         echo "Run Lint code"
+     }
+ }
+    stage('Run unit tests'){
+        when { buildingTag() }
+        steps{
+            echo "Run unit tests"
         }
-       else{
-        echo 'failure'
-       }
     }
-    stage('Run unit tests') {
-        print 'OK'
-
-    }
-    stage('Run integration tests') {
-        print 'OK'
+    stage('Run integration tests'){
+        when { allOf {
+         not { buildingTag() };
+         not { branch 'main' }
+                  }
+                  }
+        steps{
+            echo "Run integration tests"
+        }
     }
     stage('Sonar scan code review'){
-        print 'OK'
+        when { allOf {
+                 not { buildingTag() };
+                 not { branch 'main' }
+                          }
+                          }
+        steps{
+            echo "Sonar scan code review"
+        }
     }
     stage('Build code'){
-        print 'OK'
+         when { allOf {
+             not { buildingTag() };
+             not { branch 'main' }
+                      }
+                      }
+        steps{
+            echo "Build code"
+        }
     }
     stage('Release software'){
-        print 'OK'
+        when { branch 'main'}
+        steps{
+            echo "Release software"
+        }
     }
+ }
 
 }
