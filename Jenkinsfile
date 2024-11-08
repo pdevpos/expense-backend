@@ -28,19 +28,27 @@ pipeline{
         }
     }
     stage('Sonar scan code review'){
-
+        when { allOf {
+                 not { buildingTag() };
+                 not { branch 'main' }
+                          }
+                          }
         steps{
             echo "Sonar scan code review"
         }
     }
     stage('Build code'){
-       when { branch 'main'}
+         when { allOf {
+             not { buildingTag() };
+             not { branch 'main' }
+                      }
+                      }
         steps{
             echo "Build code"
         }
     }
     stage('Release software'){
-       when { branch 'main'}
+        when { branch 'main'}
         steps{
             echo "Release software"
         }
