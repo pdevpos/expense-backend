@@ -1,9 +1,11 @@
 node('ci-server') {
     stage('checkout'){
+        def repoUrl = 'https://github.com/pdevpos/expense-backend.git'
+        def branchName = env.BRANCH_NAME
         env.BRANCH_NAME = "refs/remotes/origin/${env.BRANCH_NAME}"
         checkout scm(
-            branches: [[name: "*/${env.BRANCH_NAME}"]],
-            userRemoteConfigs: [[ url: 'https://github.com/pdevpos/expense-backend.git' ]]
+            branches: [[name: "*/${branchName}"]],
+            userRemoteConfigs: [[ url: repoUrl ]]
             )
     }
     stage('Lint code') {
