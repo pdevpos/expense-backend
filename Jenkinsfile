@@ -4,7 +4,8 @@ node('ci-server') {
         git url: 'https://github.com/pdevpos/expense-backend.git',branch: 'main'
 //         def repoUrl = 'https://github.com/pdevpos/expense-backend.git'
         def branchName = 'env.BRANCH_NAME'
-        echo branchName
+        def tagName = 'env.TAG_NAME'
+        echo branchName + "..." + tagName
 //
 //         checkout scm(
 //             branches: [[name: "*/${branchName}"]],
