@@ -6,12 +6,14 @@ pipeline{
    }
  stages{
     stage('Lint code'){
+    when { branch 'main' }
         steps{
             sh 'env'
             echo "Run Lint code"
         }
     }
     stage('Run unit tests'){
+    when { branch 'main' }
         steps{
             echo "Run unit tests"
         }
