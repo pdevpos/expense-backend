@@ -7,7 +7,7 @@ pipeline{
  stages{
     stage('Lint code'){
     sh 'env'
-    when { buildingTag() }
+//     when { buildingTag() }
      steps{
          echo "Run Lint code"
      }
