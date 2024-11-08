@@ -1,10 +1,10 @@
 node('ci-server') {
     stage('checkout'){
         env.BRANCH_NAME = "refs/remotes/origin/${env.BRANCH_NAME}"
-        checkout GitSCM([
+        checkout scm(
             branches: [[name: "*/${env.BRANCH_NAME}"]],
             userRemoteConfigs: [[ url: 'https://github.com/pdevpos/expense-backend.git' ]]
-            ])
+            )
     }
     stage('Lint code') {
         if(env.BRANCH_NAME == 'main'){
