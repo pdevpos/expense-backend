@@ -19,8 +19,8 @@ pipeline{
     }
     stage('Run integration tests'){
         when { allOf {
-         not branch 'main'
-             { buildingTag() }
+         not { buildingTag() };
+             branch 'main'
                   }
                   }
         steps{
@@ -28,11 +28,6 @@ pipeline{
         }
     }
     stage('Sonar scan code review'){
-        when { allOf {
-         not branch 'main'
-             { buildingTag() }
-                }
-             }
 
         steps{
             echo "Sonar scan code review"
