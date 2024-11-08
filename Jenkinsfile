@@ -6,19 +6,20 @@ pipeline{
    }
  stages{
     stage('Lint code'){
-    when { branch 'main' }
-        steps{
+    when { buildingTag() }
+     steps{
             sh 'env'
             echo "Run Lint code"
-        }
-    }
+     }
+ }
     stage('Run unit tests'){
-    when { branch 'main' }
+        when { buildingTag() }
         steps{
             echo "Run unit tests"
         }
     }
     stage('Run integration tests'){
+
         steps{
             echo "Run integration tests"
         }
