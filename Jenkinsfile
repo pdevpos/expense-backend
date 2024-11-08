@@ -10,6 +10,10 @@ node('ci-server') {
         echo branchName
         echo tagName
         echo repo_url
+        checkout scm(
+                    branches: [[name: "*/${branchName}"]],
+                    userRemoteConfigs: [[ url: repo_url ]]
+                    )
         if(env.BRANCH_NAME == branchName){
           echo "main branch"
         }
@@ -17,11 +21,7 @@ node('ci-server') {
         echo "tag"
         }
 
-        checkout scm(
-            branches: [[name: "*/${branchName}"]],
-            userRemoteConfigs: [[ url: repo_url ]]
-            )
-    }
+            }
     stage('Lint code') {
         print 'OK'
     }
