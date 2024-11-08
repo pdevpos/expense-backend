@@ -1,8 +1,10 @@
 node('ci-server') {
     stage('checkout'){
-        git url: 'https://github.com/pdevpos/expense-backend.git',branch: 'refs/head/env.BRANCH_NAME'
+
+        git url: 'https://github.com/pdevpos/expense-backend.git',branch: 'main'
 //         def repoUrl = 'https://github.com/pdevpos/expense-backend.git'
-//         def branchName = 'env.BRANCH_NAME'
+        def branchName = 'env.BRANCH_NAME'
+        echo branchName
 //
 //         checkout scm(
 //             branches: [[name: "*/${branchName}"]],
