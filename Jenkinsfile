@@ -18,7 +18,7 @@ node('ci-server') {
         }
 
         checkout scm(
-            branches: [[name: branchName]],
+            branches: [[name: "*/${branchName}"]],
             userRemoteConfigs: [[ url: repo_url ]]
             )
     }
