@@ -18,12 +18,13 @@ pipeline{
         }
     }
     stage('Run integration tests'){
-
+        when { branch 'main' }
         steps{
             echo "Run integration tests"
         }
     }
     stage('Sonar scan code review'){
+        when { branch 'main' }
         steps{
             echo "Sonar scan code review"
         }
