@@ -1,7 +1,11 @@
 node('ci-server') {
     stage('Lint code') {
-        if(env.BRANCH_NAME == 'main')
-       print 'OK'
+        if(env.BRANCH_NAME == 'main'){
+            echo 'success'
+        }
+       else{
+        echo 'failure'
+       }
     }
     stage('Run unit tests') {
         print 'OK'
