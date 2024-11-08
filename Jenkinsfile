@@ -18,21 +18,22 @@ pipeline{
         }
     }
     stage('Run integration tests'){
-        when { allOf { not
-        { branch 'main' }
-        { buildingTag() }
-        }
-        }
+        when { allOf {
+         not branch 'main'
+             { buildingTag() }
+                  }
+                  }
         steps{
             echo "Run integration tests"
         }
     }
     stage('Sonar scan code review'){
-        when { allOf { not
-                { branch 'main' }
-                { buildingTag() }
+        when { allOf {
+         not branch 'main'
+             { buildingTag() }
                 }
-                }
+             }
+
         steps{
             echo "Sonar scan code review"
         }
