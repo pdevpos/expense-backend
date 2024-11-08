@@ -40,7 +40,7 @@ pipeline{
     stage('Build code'){
          when { allOf {
              not { buildingTag() };
-             not { branch 'main' }
+             branch 'main'
                       }
                       }
         steps{
@@ -48,7 +48,11 @@ pipeline{
         }
     }
     stage('Release software'){
-        when { branch 'main'}
+        when { allOf {
+                not { buildingTag() };
+                not { branch 'main' }
+                       }
+                       }
         steps{
             echo "Release software"
         }
