@@ -1,12 +1,13 @@
 node('ci-server') {
     stage('checkout'){
-        def repoUrl = 'https://github.com/pdevpos/expense-backend.git'
-        def branchName = 'env.BRANCH_NAME'
-
-        checkout scm(
-            branches: [[name: "*/${branchName}"]],
-            userRemoteConfigs: [[ url: repoUrl ]]
-            )
+        git url: 'https://github.com/pdevpos/expense-backend.git',branch: 'main'
+//         def repoUrl = 'https://github.com/pdevpos/expense-backend.git'
+//         def branchName = 'env.BRANCH_NAME'
+//
+//         checkout scm(
+//             branches: [[name: "*/${branchName}"]],
+//             userRemoteConfigs: [[ url: repoUrl ]]
+//             )
     }
     stage('Lint code') {
         if(env.BRANCH_NAME == 'main'){
