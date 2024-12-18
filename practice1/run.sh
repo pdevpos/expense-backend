@@ -1,5 +1,9 @@
 source /test/secrets.txt
-echo /test/secrets.txt
-#if [ -z "$DB_HOST" ]; then
-# echo DB_HOST is missing
-#fi
+#echo "getting secrets from vault" /test/secrets.txt
+cat /test/secrets.txt
+if [ -z "$RDB_HOST" ]; then
+ echo DB_HOST is missing
+fi
+if [  ]; then
+    
+fi
